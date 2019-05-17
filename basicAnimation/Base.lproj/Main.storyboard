@@ -19,12 +19,69 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2y-iR-MsD">
-                                <rect key="frame" x="167" y="236" width="100" height="100"/>
+                                <rect key="frame" x="157" y="155" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.2260741651" blue="0.32877221820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Frame">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="actionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1eK-3i-xaF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avj-MS-lSz">
+                                <rect key="frame" x="157" y="290" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36826851649999998" green="0.59163639109999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Bounds">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="boundsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="46B-0p-iBw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCN-TI-Sw6">
+                                <rect key="frame" x="157" y="425" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.85592461417877896" blue="0.46797302801660368" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Center">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ubf-x9-4Nx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfV-op-qOG">
+                                <rect key="frame" x="157" y="566" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.54078611546239075" blue="0.91449100552271145" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Alpha">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="alphaButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gm5-JK-6NC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEX-5h-gx9">
+                                <rect key="frame" x="294" y="566" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.19076508458274524" green="0.64379758883248739" blue="0.23095728164841189" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Transform">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="transformButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rmv-6B-Ixz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAP-NS-RkD">
+                                <rect key="frame" x="20" y="566" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.59072267658031641" green="0.49493152278661734" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="BG Color">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backgroundColorButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ike-y9-F1j"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -33,6 +90,11 @@
                     </view>
                     <connections>
                         <outlet property="myObject" destination="m2y-iR-MsD" id="AV1-LI-WY6"/>
+                        <outlet property="myObjectAlpha" destination="lfV-op-qOG" id="12b-35-iWP"/>
+                        <outlet property="myObjectBackgroundColor" destination="pAP-NS-RkD" id="wEy-nq-nuV"/>
+                        <outlet property="myObjectBounds" destination="Avj-MS-lSz" id="wYa-B4-4rc"/>
+                        <outlet property="myObjectCenter" destination="wCN-TI-Sw6" id="UXo-mG-Bx9"/>
+                        <outlet property="myObjectTransform" destination="VEX-5h-gx9" id="MxH-fR-cCu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
