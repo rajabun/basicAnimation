@@ -18,6 +18,7 @@ class ViewController: UIViewController
     @IBOutlet weak var myObjectAlpha: UIButton!
     @IBOutlet weak var myObjectBackgroundColor: UIButton!
     @IBOutlet weak var myObjectTransform: UIButton!
+    var currentAnimation = 0
     
     
     override func viewDidLoad()
@@ -78,17 +79,54 @@ class ViewController: UIViewController
     {
         UIView.animate(withDuration: 1)
         {
-            self.myObjectAlpha.alpha = CGFloat(bitPattern: UInt(0.5))
+            self.myObjectAlpha.alpha = CGFloat(bitPattern: UInt(0.1))
             print(self.myObjectAlpha.alpha)
         }
     }
     
     @IBAction func backgroundColorButton(_ sender: UIButton)
     {
-        UIView.animate(withDuration: 1)
+        //fungsi ini untuk menjalankan dua atau lebih animasi dalam satu button secara berurutan
+        //jika dibikin switch-case seperti ini, setiap diklik sekali, bisa memainkan satu animasi yang berbeda sesuai casenya.
+        UIView.animate(withDuration: 1, delay: 0, options: [], animations:
+            {
+                switch self.currentAnimation
+                {
+                    case 0:
+                        self.myObjectBackgroundColor.backgroundColor = .red
+                        self.view.backgroundColor = .black
+                    
+                    case 1:
+                        self.myObjectBackgroundColor.backgroundColor = .blue
+                    
+                    case 2:
+                        self.myObjectBackgroundColor.backgroundColor = .yellow
+                    
+                    case 3:
+                        self.myObjectBackgroundColor.backgroundColor = .green
+                    
+                    case 4:
+                        self.myObjectBackgroundColor.backgroundColor = .purple
+                    
+                    case 5:
+                        self.myObjectBackgroundColor.backgroundColor = .black
+                    
+                    case 6:
+                        self.myObjectBackgroundColor.backgroundColor = .white
+                    
+                    case 7:
+                        self.myObjectBackgroundColor.backgroundColor = .orange
+                
+                    default:
+                    break
+                }
+            })
+        
+        currentAnimation += 1
+        
+        if currentAnimation > 7
         {
-            self.myObjectBackgroundColor.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-            self.view.backgroundColor = .black
+            currentAnimation = 0
         }
     }
     
@@ -104,20 +142,39 @@ class ViewController: UIViewController
       */
         //fungsi ini untuk menjalankan dua animasi secara bergantian. animasi kedua dimulai setelah animasi pertama dijalankan, jadi tidak dari tempat awal animasi pertama dimulai. selalu gunakan nested untuk menjalankan lebih dari satu animasi dan satu fungsi animate hanya untuk satu animasi. jika ingin membuat tiga animasi, bikin fungsi animatenya jadi tiga.
         
-        UIView.animate(withDuration: 3, delay: 0.0, options: [], animations:
+        UIView.animate(withDuration: 1, delay: 0.5, options: [], animations:
             {
                 self.myObjectTransform.frame = CGRect(x: 294, y: 700, width: 100, height: 100)
                 //self.myObjectTransform.transform = CGAffineTransform(scaleX: 5, y: 5)
-            //self.myObjectTransform.transform = CGAffineTransform(translationX: 40, y: 60)
-        }, completion:
-            { finish in //Tanpa closure finish in, akan error : Cannot convert value of type '() -> Void' to expected argument type '((Bool) -> Void)?'
-                UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations:
-                {
-                    self.myObjectTransform.frame = CGRect(x: 157, y: 700, width: 100, height: 100)
-                    //self.myObjectTransform.transform = CGAffineTransform(scaleX: 2, y: 2)
-                    self.myObjectTransform.isEnabled = false
-                }, completion: nil)
-            })
+                //self.myObjectTransform.transform = CGAffineTransform(translationX: 40, y: 60)
+            }, completion:
+                { finish in //Tanpa closure finish in, akan error : Cannot convert value of type '() -> Void' to expected argument type '((Bool) -> Void)?'
+                    UIView.animate(withDuration: 1, delay: 0.5, options: [], animations:
+                        {
+                            self.myObjectTransform.frame = CGRect(x: 157, y: 700, width: 100, height: 100)
+                            //self.myObjectTransform.transform = CGAffineTransform(scaleX: 2, y: 2)
+                            //self.myObjectTransform.isEnabled = false
+                        }, completion:
+                            { finish in
+                                UIView.animate(withDuration: 1, delay: 0.5, options: [], animations:
+                                    {
+                                        self.myObjectTransform.transform = CGAffineTransform(scaleX: 2, y: 2)
+                                    }, completion:
+                                        { finish in
+                                            UIView.animate(withDuration: 1, delay: 0.5, options: [], animations:
+                                                {
+                                                    self.myObjectTransform.transform = CGAffineTransform(rotationAngle: 45)
+                                                }, completion:
+                                                    { finish in
+                                                        UIView.animate(withDuration: 3, delay: 2, options: [], animations:
+                                                            {
+                                                                UIView.setAnimationBeginsFromCurrentState(false)
+                                                                self.myObjectTransform.transform = CGAffineTransform(translationX: -50, y: -50)
+                                                            }, completion: nil)
+                                                    })
+                                        })
+                            })
+                })
     }
   
 }
