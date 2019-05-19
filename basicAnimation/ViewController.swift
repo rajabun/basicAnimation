@@ -27,27 +27,33 @@ class ViewController: UIViewController
         //#2. Buat Button jadi Bundar
         myObject.layer.cornerRadius = myObject.frame.width/2
         
+        //myObjectTransform.layer.cornerRadius = myObjectTransform.frame.width/2
+        
         print(myObject.frame)
     }
     
     //#3. Deklarasi Action Button + Masukin Animasi
     @IBAction func actionButton(_ sender: UIButton)
     {
+        //kalau hanya seperti ini, satu fungsi hanya bisa menjalankan satu animasi saja. kalau dimasukin dua, jadinya langsung animasi yang terakhir ditulis (kedua) yang dijalankan
+       
         UIView.animate(withDuration: 1)
         {
             self.myObject.frame = CGRect(x: 23, y: 100, width: 100, height: 100)
             print(self.myObject.frame)
-            /*
+        }
+        
+        //kalau seperti ini tetap hanya satu animasi yang berjalan yaitu animasi terakhir
+        /*
             UIView.animate(withDuration: 1)
             {
-                self.myObject.transform = CGAffineTransform(scaleX: 5, y: 5)
-                UIView.animate(withDuration: 1)
+                self.myObject.frame = CGRect(x: 20, y: 155, width: 100, height: 100)
+                UIView.animate(withDuration: 5)
                 {
-                    self.myObject.transform = CGAffineTransform(translationX: 100, y: 100)
+                    self.myObject.frame = CGRect(x: 20, y: 290, width: 100, height: 100)
                 }
             }
-             */
-        }
+        */
     }
 
     @IBAction func boundsButton(_ sender: UIButton)
@@ -87,14 +93,31 @@ class ViewController: UIViewController
     }
     
     @IBAction func transformButton(_ sender: UIButton)
-    {
+    {/*
         UIView.animate(withDuration: 1)
         {
-            self.myObjectTransform.transform = CGAffineTransform(rotationAngle: 45)
-            self.myObjectTransform.transform = CGAffineTransform(scaleX: 5, y: 5)
-            self.myObjectTransform.transform = CGAffineTransform(translationX: 40, y: 60)
-            
+            //self.myObjectTransform.transform = CGAffineTransform(rotationAngle: 45)
+            self.myObjectTransform.transform = CGAffineTransform(scaleX: 2, y: 2)
+            //self.myObjectTransform.transform = CGAffineTransform(translationX: 40, y: 60)
+            print(self.myObjectTransform.transform)
         }
+      */
+        //fungsi ini untuk menjalankan dua animasi secara bergantian. animasi kedua dimulai setelah animasi pertama dijalankan, jadi tidak dari tempat awal animasi pertama dimulai. selalu gunakan nested untuk menjalankan lebih dari satu animasi dan satu fungsi animate hanya untuk satu animasi. jika ingin membuat tiga animasi, bikin fungsi animatenya jadi tiga.
+        
+        UIView.animate(withDuration: 3, delay: 0.0, options: [], animations:
+            {
+                self.myObjectTransform.frame = CGRect(x: 294, y: 700, width: 100, height: 100)
+                //self.myObjectTransform.transform = CGAffineTransform(scaleX: 5, y: 5)
+            //self.myObjectTransform.transform = CGAffineTransform(translationX: 40, y: 60)
+        }, completion:
+            { finish in //Tanpa closure finish in, akan error : Cannot convert value of type '() -> Void' to expected argument type '((Bool) -> Void)?'
+                UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations:
+                {
+                    self.myObjectTransform.frame = CGRect(x: 157, y: 700, width: 100, height: 100)
+                    //self.myObjectTransform.transform = CGAffineTransform(scaleX: 2, y: 2)
+                    self.myObjectTransform.isEnabled = false
+                }, completion: nil)
+            })
     }
   
 }
